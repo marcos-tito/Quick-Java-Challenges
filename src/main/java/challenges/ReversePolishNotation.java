@@ -18,7 +18,7 @@ public class ReversePolishNotation {
      * @return
      */
     public static int calculate(String expression) {
-        System.out.println("expression = "+ expression);
+        System.out.println("expression = " + expression);
         if (expression == null || expression.isBlank()) {
             return 0;
         }
@@ -38,46 +38,27 @@ public class ReversePolishNotation {
                 if ("+".equals(currentElement)) {
                     int first = stack[cursor--];
                     int second = stack[cursor];
-                    stack[cursor] = second+first;
+                    stack[cursor] = second + first;
                 }
                 if ("-".equals(currentElement)) {
                     int first = stack[cursor--];
                     int second = stack[cursor];
-                    stack[cursor] = second-first;
+                    stack[cursor] = second - first;
                 }
                 if ("*".equals(currentElement)) {
                     int first = stack[cursor--];
                     int second = stack[cursor];
-                    stack[cursor] = second*first;
+                    stack[cursor] = second * first;
                 }
-                if("/".equals(currentElement)) {
+                if ("/".equals(currentElement)) {
                     int first = stack[cursor--];
                     int second = stack[cursor];
-                    stack[cursor] = second/first;
+                    stack[cursor] = second / first;
                 }
             }
         }
-        System.out.println("Returning=> "+stack[cursor]);
+        System.out.println("Returning=> " + stack[cursor]);
         return stack[cursor];
     }
 
-    private static void printStack (int[] stack) {
-        for (int i = 0; i < stack.length; i++) {
-            System.out.println("stack["+i+"] = "+stack[i]);
-        }
-        System.out.println("--------------------------");
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ReversePolishNotation that = (ReversePolishNotation) o;
-        return att1 == that.att1 && att2 == that.att2 && att3 == that.att3 && att4 == that.att4;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(att1, att2, att3, att4);
-    }
 }
